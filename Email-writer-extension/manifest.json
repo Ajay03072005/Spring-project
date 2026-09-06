@@ -1,0 +1,35 @@
+{
+   
+    "name": "email Extension",
+    "description": "This extension allows users to send emails directly from the browser.",
+    "version": "1.0",
+    "manifest_version": 3,
+     "permissions": [
+        "activeTab",
+        "storage"
+    ],
+    "host_permissions": [
+        "http://localhost:9090/*",
+        "*://mail.google.com/*"
+    ],
+    "web_accessible_resources": [
+        {
+            "resources": ["content.js", "content.css"],
+            "matches": ["*://mail.google.com/*"]
+        }
+    ],
+    "content_scripts": [
+        {
+            "matches": ["*://mail.google.com/*"],
+            "js": ["content.js"],
+            "css": ["content.css"],
+            "run_at": "document_end"
+            
+        }
+    ],
+     "actions": {
+        "default_title": "Email Writer Assistant"
+    }
+
+
+}
